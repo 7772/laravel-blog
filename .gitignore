@@ -2,10 +2,21 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/*.json
 /vendor
-.env
-.phpunit.result.cache
+/.idea
+/.vscode
+/.vagrant
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.env
+.DS_Store
+/tests/Browser/console
+.env.backup
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
