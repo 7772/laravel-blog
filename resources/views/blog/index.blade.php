@@ -2,7 +2,6 @@
 
 <!-- Page content begins -->
 @section('content')
-    <div class="content">
-        <p>Hello.</p>
+    <div class="container">
     </div>
 @endsection
