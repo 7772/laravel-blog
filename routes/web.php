@@ -1,6 +1,8 @@
 <?php
 
-Route::get('/', 'Blog\HomeController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::domain('local-7772.blog.io')->group(function () {
+    Route::get('/', 'Blog\HomeController@index')->name('home');
+});
+
