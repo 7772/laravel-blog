@@ -13,8 +13,8 @@ use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
-    public function create()
+    public function show()
     {
-        return view('blog.posts.create');
+        return view('blog.posts.show');
     }
 }
