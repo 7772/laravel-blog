@@ -8,13 +8,14 @@
 
 namespace App\Http\Controllers\Blog;
 
-
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        return view('blog.posts.show');
+        $post = Post::findOrFail($id);
+        return view('blog.posts.show')->with('post', $post);
     }
 }

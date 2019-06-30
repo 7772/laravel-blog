@@ -1,12 +1,18 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: landon
+ * Date: 2019-06-30
+ * Time: 13:46
+ */
 
 namespace Tests\Controllers\Blog;
 
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\MockHelper;
 use Tests\TestCase;
 
-class HomeControllerTest extends TestCase
+class PostControllerShowTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -20,9 +26,10 @@ class HomeControllerTest extends TestCase
     public function test()
     {
         // Given
+        $post = MockHelper::mockPost();
 
         // When
-        $response = $this->get('/');
+        $response = $this->get("/posts/{$post->id}");
 
         // Then
         $response->assertStatus(200);

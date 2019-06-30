@@ -8,6 +8,7 @@
 
 namespace Tests;
 
+use App\Models\Post;
 use App\User;
 use Illuminate\Support\Str;
 
@@ -20,6 +21,15 @@ class MockHelper
         $user->save();
 
         return $user->refresh();
+    }
+
+    public static function mockPost() : Post
+    {
+        $post = self::mockPostModel();
+
+        $post->save();
+
+        return $post->refresh();
     }
 
     private static function mockUserModel($name = null, $email = null, $password = null) : User
@@ -43,5 +53,29 @@ class MockHelper
         ]);
 
         return $user;
+    }
+
+    private static function mockPostModel($title = null, $content = null, $userId = null) : Post
+    {
+        if (empty($title)) {
+            $title = Str::random(5);
+        }
+
+        if (empty($content)) {
+            $content = Str::random(100);
+        }
+
+        if (empty($userId)) {
+            $user = self::mockUser();
+            $userId = $user->id;
+        }
+
+        $post = Post::create([
+            'title' => $title,
+            'content' => $content,
+            'user_id' => $userId,
+        ]);
+
+        return $post;
     }
 }

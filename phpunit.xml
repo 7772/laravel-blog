@@ -9,12 +9,44 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+        <testsuite name="Console">
+            <directory suffix="Test.php">./tests/Console</directory>
+        </testsuite>
+
+        <testsuite name="Listeners">
+            <directory suffix="Test.php">./tests/Listeners</directory>
         </testsuite>
 
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+
+        <testsuite name="Models">
+            <directory suffix="Test.php">./tests/Models</directory>
+        </testsuite>
+
+        <testsuite name="Domains">
+            <directory suffix="Test.php">./tests/Domains</directory>
+        </testsuite>
+
+        <testsuite name="Services">
+            <directory suffix="Test.php">./tests/Services</directory>
+        </testsuite>
+
+        <testsuite name="Externals">
+            <directory suffix="Test.php">./tests/Externals</directory>
+        </testsuite>
+
+        <testsuite name="Controllers">
+            <directory suffix="Test.php">./tests/Controllers</directory>
+        </testsuite>
+
+        <testsuite name="Repositories">
+            <directory suffix="Test.php">./tests/Repositories</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -24,10 +56,9 @@
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
-        <env name="MAIL_DRIVER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="MAIL_DRIVER" value="array"/>
     </php>
 </phpunit>

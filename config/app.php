@@ -226,4 +226,8 @@ return [
 
     ],
 
+    /**
+     * sub_domain_prefix
+     */
+    'sub_domain_prefix' => env('APP_DOMAIN_PREFIX', ''),
 ];

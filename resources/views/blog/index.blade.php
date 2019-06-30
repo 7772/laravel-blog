@@ -5,10 +5,10 @@
 
 
     <div class="container">
-        @if (!empty($posts))
+        @if (! $posts->count() < 1)
             <ul>
                 @foreach ($posts as $post)
-                    <a href="{{ route('post.detail', 'Post Detail', ['id' => $post->id]) }}">
+                    <a href="{{ route('post.detail', ['id' => $post->id]) }}">
                         <div style="width: 70em; height: 15em; overflow: hidden; margin-bottom: 50px; background-color: #f3f3f6; padding: 10px;">
                             <div class="" style="border-bottom: 2px solid #262933">
                                 <div class="d-flex">
