@@ -6,12 +6,12 @@ $domainPrefix = (config('app.env', '') == 'production') ? '' : (config('app.sub_
 
 Route::domain($domainPrefix . '7772.blog.io')->group(function () {
     Route::get('/', 'Blog\HomeController@index')->name('home');
-    Route::get('/posts/detail/{id}', 'Blog\PostController@show')->name('post.detail');
-    Route::get('/posts/register', 'Blog\PostController@create');
+    Route::get('/posts/detail/{id}', 'Blog\Ajax\PostController@show')->name('post.detail');
 
-//    Route::middleware('auth', function () {
-//        Route::get('/posts/create', 'Blog\PostController@create')->name('post.create');
-//    });
+    Route::middleware('auth')->group(function () {
+        Route::get('/posts/register', 'Blog\PostController@create')->name('post.register');
+        Route::post('/posts/register', 'Blog\Ajax\PostController@register')->name('post.register');
+    });
 
 });
 
