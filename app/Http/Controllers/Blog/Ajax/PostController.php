@@ -18,8 +18,6 @@ class PostController extends Controller
 
     public function register(Request $request)
     {
-        dump($request);
-
         $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -34,8 +32,6 @@ class PostController extends Controller
             'user_id' => $user->id,
         ]);
         $post->save();
-
-        dd($post);
 
         return redirect('/');
     }
