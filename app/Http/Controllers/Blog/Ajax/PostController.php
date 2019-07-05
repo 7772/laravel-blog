@@ -26,13 +26,12 @@ class PostController extends Controller
         /** @var User $user */
         $user = Auth::user();
 
-        $post = new Post([
+        Post::create([
             'title' => $request->get('title'),
             'content' => $request->get('content'),
             'user_id' => $user->id,
         ]);
-        $post->save();
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

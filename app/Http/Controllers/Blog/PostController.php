@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
-    public function create()
+    public function register()
     {
-        return view('blog.posts.create');
+        return view('blog.posts.register');
     }
 }
