@@ -2,35 +2,29 @@
 
 namespace App\Http\Controllers\Blog\Ajax;
 
-use App\User;
+use App\Http\Requests\Blog\Ajax\RegisterPostRequest;
+use App\Http\Services\PostService;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    private $postService;
+
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
     public function show($id)
     {
         $post = Post::findOrFail($id);
         return view('blog.posts.show')->with('post', $post);
     }
 
-    public function register(Request $request)
+    public function register(RegisterPostRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-
-        /** @var User $user */
-        $user = Auth::user();
-
-        Post::create([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'user_id' => $user->id,
-        ]);
+        $this->postService->register($request->all());
 
         return redirect()->route('home');
     }
