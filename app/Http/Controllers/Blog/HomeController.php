@@ -9,8 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->paginate(5);
-
-        return view('blog.index')->with('posts', $posts);
+        return view('blog.home');
     }
 }

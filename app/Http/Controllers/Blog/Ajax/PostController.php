@@ -16,6 +16,14 @@ class PostController extends Controller
         $this->postService = $postService;
     }
 
+    public function getList()
+    {
+        $posts = Post::latest()->get();
+        return response()->json([
+            'posts' => $posts
+        ]);
+    }
+
     public function show($id)
     {
         $post = Post::findOrFail($id);
