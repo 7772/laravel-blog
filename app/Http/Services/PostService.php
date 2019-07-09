@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PostService
 {
+    public function getList()
+    {
+        $posts = Post::latest('id')->paginate(5);
+        return $posts;
+    }
+
     public function register($data)
     {
         /** @var User $user */

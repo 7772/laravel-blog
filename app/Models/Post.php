@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\User;
 use App\Models\Comment;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string title
  * @property string content
  * @property int user_id
+ * @property Carbon created_at
  */
 class Post extends Model
 {
