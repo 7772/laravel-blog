@@ -17,11 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div class="wrapper">
-    @yield('content')
-</div>
+    <div id="blog-app">
+    </div>
+
+    <script src="{{ asset('js/blogs/blog-app.js') }}"></script>
 </body>
 </html>

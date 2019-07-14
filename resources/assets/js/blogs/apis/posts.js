@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default {
-    search(params, cb, errCb) {
-        axios.get('/posts', params)
+    getList(params, cb, errCb) {
+        axios.get('/ajax/posts', params)
             .then(cb)
             .catch(errCb);
     },

@@ -8,8 +8,13 @@ import axios from 'axios';
 // import wysiwyg from "vue-wysiwyg";
 // import VModal from 'vue-js-modal';
 
-import Welcome from './components/Welcome';
-import PostList from "./components/PostList";
+
+/** Screens */
+import HomeScreen from "./src/screens/HomeScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+
+/** Components */
+import PostList from "./src/components/PostList";
 
 Vue.prototype.$http = axios;
 
@@ -24,7 +29,8 @@ Vue.use(VueRouter);
 
 
 const routes = [
-    { path: '/', component: PostList},
+    {path: '/', component: HomeScreen},
+    {path: '/login', component: LoginScreen},
 ];
 
 const router = new VueRouter({

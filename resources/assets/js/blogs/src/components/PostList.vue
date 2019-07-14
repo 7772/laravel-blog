@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import apis from '../apis';
+    import apis from '../../apis';
 
     export default {
         name: "PostList",
@@ -32,19 +32,18 @@
             }
         },
         mounted() {
-            console.log('mounted');
-            this.search();
+            console.log('postlist mounted');
+            this.getList();
         },
         methods: {
-            search() {
+            getList() {
                 let params = {page: this.page};
 
-                apis.posts.search(params, response => {
+                apis.posts.getList(params, response => {
+                    console.log('postlist response', response);
                     this.posts = response.data.posts;
                     this.resultMetadata = response.data.result_metadata;
                     // this.page = this.resultMetadata.current_page;
-
-                    console.log(this.posts, this.resultMetadata);
                 });
             },
         }
