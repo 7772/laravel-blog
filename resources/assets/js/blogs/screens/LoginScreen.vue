@@ -1,26 +1,36 @@
 <template>
     <div id="login">
         <h1>Login</h1>
-        <input type="text" name="username" v-model="input.username" placeholder="Username" />
+        <input type="email" name="email" v-model="input.email" placeholder="Email" />
         <input type="password" name="password" v-model="input.password" placeholder="Password" />
         <button type="button" v-on:click="login()">Login</button>
     </div>
 </template>
 
 <script>
+    import apis from '../apis';
+
     export default {
         name: 'LoginScreen',
         data() {
             return {
                 input: {
-                    username: "",
+                    email: "",
                     password: ""
                 }
             }
         },
         methods: {
             login() {
-                alert('login~');
+                const params = {
+                    email: this.input.email,
+                    password: this.input.password,
+                };
+
+                this.$store.dispatch('login', params)
+                    .then(response => {
+                        this.$router.push('/');
+                    });
             }
         }
     }

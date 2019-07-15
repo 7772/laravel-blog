@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import apis from '../../apis';
+    import apis from '../apis';
 
     export default {
         name: "PostList",
@@ -44,6 +44,8 @@
                     this.posts = response.data.posts;
                     this.resultMetadata = response.data.result_metadata;
                     // this.page = this.resultMetadata.current_page;
+                }, error => {
+                    alert(error);
                 });
             },
         }

@@ -14,9 +14,9 @@ use Illuminate\Support\Str;
 
 class MockHelper
 {
-    public static function mockUser() : User
+    public static function mockUser($name = null, $email = null, $password = null) : User
     {
-        $user = self::mockUserModel();
+        $user = self::mockUserModel($name, $email, $password);
 
         $user->save();
 

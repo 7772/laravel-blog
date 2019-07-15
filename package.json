@@ -23,5 +23,9 @@
         "vue": "^2.5.17",
         "vue-router": "^3.0.7",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "vuex": "^3.1.1",
+        "vuex-persistedstate": "^2.5.4"
     }
 }
