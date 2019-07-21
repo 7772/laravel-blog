@@ -32,7 +32,6 @@
             }
         },
         mounted() {
-            console.log('postlist mounted');
             this.getList();
         },
         methods: {
@@ -40,7 +39,6 @@
                 let params = {page: this.page};
 
                 apis.posts.getList(params, response => {
-                    console.log('postlist response', response);
                     this.posts = response.data.posts;
                     this.resultMetadata = response.data.result_metadata;
                     // this.page = this.resultMetadata.current_page;

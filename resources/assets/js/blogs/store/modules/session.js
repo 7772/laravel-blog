@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
 
 import apis from '../../apis';
 
@@ -8,7 +7,6 @@ import apis from '../../apis';
 Vue.use(Vuex);
 const session = {
     state: {
-        isLoggedIn: false,
         accessToken: null,
         email: null,
         name: null,
@@ -33,6 +31,16 @@ const session = {
                 });
             });
         },
+        logout() {
+        },
+        getMyInfo({dispatch, commit}, payload) {
+            return new Promise((resolve, reject) => {
+                apis.auths.getMyInfo(payload, response => {
+                }, error => {
+                    reject(error);
+                });
+            });
+        },
     },
     mutations: {
         setAccessToken(state, accessToken) {
@@ -50,13 +58,15 @@ const session = {
             state.name = null;
         }
     },
-    // getters: {
-    //     accessToken(state) {
-    //         return state.accessToken;
-    //     },
-    // },
-    plugins: [createPersistedState()],
-}
+    getters: {
+        hasAccessToken(state) {
+            return !!state.accessToken;
+        },
+        accessToken(state) {
+            return state.accessToken;
+        },
+    },
+};
 
 export default session;
 

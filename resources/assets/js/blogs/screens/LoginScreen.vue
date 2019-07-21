@@ -20,6 +20,17 @@
                 }
             }
         },
+        computed: {
+            isLoggedIn() {
+                return this.$store.getters.hasAccessToken;
+            },
+        },
+        mounted() {
+            if (this.isLoggedIn) {
+                alert("You're already logged in.");
+                this.$router.push('/');
+            }
+        },
         methods: {
             login() {
                 const params = {

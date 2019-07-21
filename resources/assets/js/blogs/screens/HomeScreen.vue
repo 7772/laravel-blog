@@ -1,26 +1,26 @@
 <template>
     <div>
-        <p>HomeScreen</p>
+        <top-navigation></top-navigation>
         <post-list></post-list>
     </div>
 </template>
 
 <script>
     import PostList from '../components/PostList';
+    import TopNavigation from "../components/TopNavigation";
 
     export default {
         name: "Home.vue",
         components: {
+            TopNavigation,
             PostList,
         },
-        mounted() {
-            console.log('homescreen mounted');
+        data () {
+            return {};
         },
-        data () {},
         methods: {},
     }
 </script>
 
 <style scoped>
-
 </style>

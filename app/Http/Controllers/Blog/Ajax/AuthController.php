@@ -4,23 +4,31 @@ namespace App\Http\Controllers\Blog\Ajax;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\Ajax\LoginRequest;
-use App\Http\Services\LoginService;
+use App\Http\Services\AuthService;
 
 class AuthController extends Controller
 {
-    /** @var LoginService */
-    private $loginService;
+    /** @var AuthService */
+    private $authService;
 
-    public function __construct(LoginService $loginService)
+    public function __construct(AuthService $authService)
     {
-        $this->loginService = $loginService;
+        $this->authService = $authService;
     }
 
     public function login(LoginRequest $request)
     {
-        $auth = $this->loginService->login($request);
+        $auth = $this->authService->login($request);
         return response()->json([
             'auth' => $auth,
+        ]);
+    }
+
+    public function logout()
+    {
+        $this->authService->logout();
+        return response()->json([
+            'message' => 'Logout Success.',
         ]);
     }
 }

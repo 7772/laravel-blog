@@ -10,6 +10,14 @@ Route::domain($domainPrefix . '7772.blog.io')->namespace('Blog')->group(function
 
         /** Auth */
         Route::post('/login', 'AuthController@login');
+
+        Route::middleware('auth:api')->group(function () {
+            /** Auth */
+            Route::post('/logout', 'AuthController@logout');
+
+            /** Session */
+            Route::get('/me', 'SessionController@me');
+        });
     });
 
     Route::get('/{any}', 'HomeController@index')->where('any', '.*');
