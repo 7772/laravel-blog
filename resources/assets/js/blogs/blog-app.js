@@ -17,6 +17,10 @@ Vue.prototype.$http = axios;
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+Vue.filter('truncate', function (text, stop, clamp) {
+    return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '');
+});
+
 // Vue.use(ToggleButton);
 // Vue.use(VModal);
 // Vue.use(wysiwyg, {}); // config is optional. more below

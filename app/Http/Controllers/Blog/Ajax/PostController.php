@@ -24,7 +24,7 @@ class PostController extends Controller
                 'id' => $post->id,
                 'title' => $post->title,
                 'content' => $post->content,
-                'created_at' => $post->created_at,
+                'created_at' => $post->created_at->toDateTimeString(),
             ];
         });
 
@@ -43,6 +43,6 @@ class PostController extends Controller
     {
         $this->postService->register($request->all());
 
-        return redirect()->route('home');
+        return response()->json([]);
     }
 }

@@ -6,4 +6,9 @@ export default {
             .then(cb)
             .catch(errCb);
     },
+    register(params, cb, errCb) {
+        axios.post('/ajax/posts/register', params)
+            .then(cb)
+            .catch(errCb);
+    },
 };

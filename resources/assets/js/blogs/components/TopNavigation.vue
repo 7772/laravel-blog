@@ -1,7 +1,8 @@
 <template>
     <b-navbar class="header" fixed="top" type="light" variant="light">
         <b-navbar-brand href="#">7772's Blog</b-navbar-brand>
-        <a v-if="isLoggedIn" @click="logout">logout</a>
+        <router-link v-if="isLoggedIn" class="top-link" to="/posts/register">Register</router-link>
+        <a v-if="isLoggedIn" class="top-link" @click="logout" href="#">Logout</a>
     </b-navbar>
 </template>
 
@@ -32,3 +33,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .top-link {
+        margin-left: 10px;
+    }
+</style>

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: landon
- * Date: 2019-07-07
- * Time: 19:11
- */
 
 namespace Tests\Controllers\Blog;
 
@@ -22,7 +16,9 @@ class TestCaseForBlogWithAuth extends TestCase
         parent::setUp();
 
         config(['app.url' => 'http://test-7772.blog.io']);
+        $this->artisan('passport:install');
+
         $this->user = MockHelper::mockUser();
-        $this->actingAs($this->user);
+        $this->actingAs($this->user, 'api');
     }
 }

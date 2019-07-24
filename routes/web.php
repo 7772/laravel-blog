@@ -17,6 +17,9 @@ Route::domain($domainPrefix . '7772.blog.io')->namespace('Blog')->group(function
 
             /** Session */
             Route::get('/me', 'SessionController@me');
+
+            /** Post */
+            Route::post('/posts/register', 'PostController@register');
         });
     });
 

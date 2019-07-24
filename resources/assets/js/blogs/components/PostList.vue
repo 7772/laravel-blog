@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container post-container">
         <ul>
             <a v-for="post in posts" @click="show(post.id)" href="#">
                 <div style="width: 70em; height: 15em; overflow: hidden; margin-bottom: 50px; background-color: #f3f3f6; padding: 10px;">
@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div style="padding-top: 10px;">
-                        <h2>{{ post.content }}</h2>
+                        <h2>{{ post.content | truncate(20) }}</h2>
                     </div>
                 </div>
             </a>
@@ -41,7 +41,6 @@
                 apis.posts.getList(params, response => {
                     this.posts = response.data.posts;
                     this.resultMetadata = response.data.result_metadata;
-                    // this.page = this.resultMetadata.current_page;
                 }, error => {
                     alert(error);
                 });
@@ -51,5 +50,7 @@
 </script>
 
 <style scoped>
-
+    .post-container {
+        margin-top: 100px;
+    }
 </style>
