@@ -29,7 +29,7 @@ class PostControllerShowTest extends TestCase
         $post = MockHelper::mockPost();
 
         // When
-        $response = $this->get("/posts/detail/{$post->id}");
+        $response = $this->get("/ajax/posts/{$post->id}");
 
         // Then
         $response->assertStatus(200);

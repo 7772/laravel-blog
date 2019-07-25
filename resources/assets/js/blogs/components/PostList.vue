@@ -1,7 +1,7 @@
 <template>
     <div class="container post-container">
         <ul>
-            <a v-for="post in posts" @click="show(post.id)" href="#">
+            <a v-for="post in posts" @click="navigateToPost(post.id)" href="#">
                 <div style="width: 70em; height: 15em; overflow: hidden; margin-bottom: 50px; background-color: #f3f3f6; padding: 10px;">
                     <div class="" style="border-bottom: 2px solid #262933">
                         <div class="d-flex">
@@ -43,6 +43,11 @@
                     this.resultMetadata = response.data.result_metadata;
                 }, error => {
                     alert(error);
+                });
+            },
+            navigateToPost(id) {
+                this.$router.push({
+                    path: `/posts/${id}`
                 });
             },
         }

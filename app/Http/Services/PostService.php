@@ -27,4 +27,10 @@ class PostService
 
         return $post;
     }
+
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        return $post;
+    }
 }

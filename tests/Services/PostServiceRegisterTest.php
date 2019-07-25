@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: landon
- * Date: 2019-07-07
- * Time: 19:29
- */
 
 namespace Tests\Services;
-
 
 use App\Http\Services\PostService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Controllers\Blog\TestCaseForBlogWithAuth;
 
-class PostServicesRegisterTest extends TestCaseForBlogWithAuth
+class PostServiceRegisterTest extends TestCaseForBlogWithAuth
 {
     use RefreshDatabase;
 

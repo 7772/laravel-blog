@@ -11,4 +11,9 @@ export default {
             .then(cb)
             .catch(errCb);
     },
+    show(id, cb, errCb) {
+        axios.get('/ajax/posts/' + id)
+            .then(cb)
+            .catch(errCb);
+    },
 };

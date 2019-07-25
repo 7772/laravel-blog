@@ -33,11 +33,13 @@ class PostController extends Controller
         ]);
     }
 
-//    public function show($id)
-//    {
-//        $post = Post::findOrFail($id);
-//        return view('blog.posts.show')->with('post', $post);
-//    }
+    public function show($id)
+    {
+        $post = $this->postService->show($id);
+        return response()->json([
+            'post' => $post,
+        ]);
+    }
 
     public function register(RegisterPostRequest $request)
     {
