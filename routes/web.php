@@ -7,6 +7,7 @@ Route::domain($domainPrefix . '7772.blog.io')->namespace('Blog')->group(function
     Route::namespace('Ajax')->prefix('ajax')->group(function () {
         /** Post */
         Route::get('/posts', 'PostController@getList');
+        Route::get('/posts/detail/{id}', );
 
         /** Auth */
         Route::post('/login', 'AuthController@login');

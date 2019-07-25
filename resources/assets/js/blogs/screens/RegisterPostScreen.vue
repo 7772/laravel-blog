@@ -6,6 +6,7 @@
                     v-model="title"
                     class="no-border title"
                     placeholder="title"
+                    autocomplete="off"
                 ></b-form-input>
             </div>
             <div class="card-body">
@@ -14,6 +15,7 @@
                     class="no-border content"
                     placeholder="content"
                     rows="12"
+                    autocomplete="off"
                 ></b-form-textarea>
             </div>
             <div class="card-body">
@@ -64,5 +66,23 @@
     .content {
         font-size: 25px;
         height: 100%;
+    }
+
+    textarea:hover,
+    input:hover,
+    textarea:active,
+    input:active,
+    textarea:focus,
+    input:focus,
+    button:focus,
+    button:active,
+    button:hover,
+    label:focus,
+    .btn:active,
+    .btn.active
+    {
+        outline:0px !important;
+        -webkit-appearance:none;
+        box-shadow: none !important;
     }
 </style>
