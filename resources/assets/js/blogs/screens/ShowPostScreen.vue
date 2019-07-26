@@ -1,17 +1,29 @@
 <template>
-    <div>
-    <p v-if="!!id">{{id}}</p>
-    <p v-if="!!title">{{title}}</p>
-    <p v-if="!!content">{{content}}</p>
-    <p v-if="!!createdAt">{{createdAt}}</p>
+    <div class="row">
+        <top-navigation></top-navigation>
+        <div class="container post-container">
+            <section class="post-title">
+                <h1 v-if="!!title">{{title}}</h1>
+                <p v-if="!!createdAt">{{createdAt}}</p>
+            </section>
+
+            <section class="post-content">
+                <p v-if="!!content">{{content}}</p>
+            </section>
+
+        </div>
     </div>
 </template>
 
 <script>
     import apis from '../apis';
+    import TopNavigation from '../components/TopNavigation';
 
     export default {
         name: "ShowPostScreen",
+        components: {
+            TopNavigation,
+        },
         data() {
             return {
                 id: null,
@@ -29,7 +41,6 @@
                 this.id = id;
 
                 apis.posts.show(this.id, response => {
-                    console.log(response);
                     const {post} = response.data;
 
                     this.id = post.id;
@@ -43,5 +54,21 @@
 </script>
 
 <style scoped>
+    .post-container {
+        margin-top: 10em;
+    }
 
+    .post-title {
+        display: block;
+        word-wrap: break-word;
+        width: 100%;
+    }
+
+    .post-content {
+        padding: 1em;
+        display: block;
+        word-wrap: break-word;
+        width: 100%;
+        height: auto;
+    }
 </style>
