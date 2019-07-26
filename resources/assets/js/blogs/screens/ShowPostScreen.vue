@@ -7,8 +7,10 @@
                 <p v-if="!!createdAt">{{createdAt}}</p>
             </section>
 
-            <section class="post-content">
-                <p v-if="!!content">{{content}}</p>
+            <section
+                class="post-content"
+                v-html="compiledMarkdown"
+            >
             </section>
 
         </div>
@@ -16,6 +18,7 @@
 </template>
 
 <script>
+    import marked from 'marked';
     import apis from '../apis';
     import TopNavigation from '../components/TopNavigation';
 
@@ -28,12 +31,17 @@
             return {
                 id: null,
                 title: null,
-                content: null,
+                content: '',
                 createdAt: null,
             };
         },
         mounted() {
             this.show();
+        },
+        computed: {
+            compiledMarkdown: function () {
+                return marked(this.content, { sanitize: true })
+            }
         },
         methods: {
             show() {
@@ -47,6 +55,7 @@
                     this.title = post.title;
                     this.content = post.content;
                     this.createdAt = post.created_at;
+
                 }, error => {});
             },
         },
