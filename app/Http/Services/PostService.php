@@ -10,7 +10,7 @@ class PostService
 {
     public function getList()
     {
-        $posts = Post::latest('id')->paginate(5);
+        $posts = Post::latest()->paginate(10);
         return $posts;
     }
 

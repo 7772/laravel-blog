@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: landon
- * Date: 2019-07-14
- * Time: 22:45
- */
 
 namespace Tests\Controllers\Blog\Ajax;
-
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\MockHelper;

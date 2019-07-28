@@ -37,5 +37,6 @@
 <style scoped>
     .top-link {
         margin-left: 10px;
+        color: rgba(134, 57, 255, 0.91);
     }
 </style>

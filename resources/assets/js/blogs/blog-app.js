@@ -2,23 +2,23 @@ require('../bootstrap');
 
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
+import Pagination from 'laravel-vue-pagination';
 import axios from 'axios';
-// import Paginate from 'vuejs-paginate';
 // import ToggleButton from 'vue-js-toggle-button'
 // import wysiwyg from "vue-wysiwyg";
 // import VModal from 'vue-js-modal';
 import router from './router';
 import store from './store';
-import apis from './apis';
 
 Vue.use(BootstrapVue);
+Vue.component('pagination', Pagination);
 Vue.prototype.$http = axios;
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.filter('truncate', function (text, stop, clamp) {
-    return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '');
+    return text.slice(0, stop) + (stop < text.length ? clamp || '...more' : '');
 });
 
 // Vue.use(ToggleButton);

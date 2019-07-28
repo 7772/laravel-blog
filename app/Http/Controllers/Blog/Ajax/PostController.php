@@ -18,16 +18,7 @@ class PostController extends Controller
 
     public function getList()
     {
-        $paginator = $this->postService->getList();
-        $posts = collect($paginator->items())->map(function (Post $post) {
-            return [
-                'id' => $post->id,
-                'title' => $post->title,
-                'content' => $post->content,
-                'created_at' => $post->created_at->toDateTimeString(),
-            ];
-        });
-
+        $posts = $this->postService->getList();
         return response()->json([
             'posts' => $posts
         ]);
