@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="col-lg-12 col-centered">
+    <div>
+        <!--<div class="col-lg-12 col-centered">-->
             <div class="card-body">
                 <b-form-input
                     v-model="title"
@@ -9,31 +9,48 @@
                     autocomplete="off"
                 ></b-form-input>
             </div>
-            <div class="card-body">
+            <!--<div class="card-body">-->
+                <!--<b-form-textarea-->
+                    <!--v-model="content"-->
+                    <!--class="no-border content"-->
+                    <!--placeholder="content"-->
+                    <!--rows="12"-->
+                    <!--autocomplete="off"-->
+                <!--&gt;</b-form-textarea>-->
+            <!--</div>-->
+
+            <div id="editor" class="content">
                 <b-form-textarea
                     v-model="content"
-                    class="no-border content"
-                    placeholder="content"
+                    @input="update"
                     rows="12"
-                    autocomplete="off"
                 ></b-form-textarea>
+                <div v-html="compiledMarkdown"></div>
             </div>
+
             <div class="card-body">
                 <b-button variant="light" class="no-border" @click="register">register</b-button>
             </div>
-        </div>
+        <!--</div>-->
     </div>
 </template>
 
 <script>
+    import _ from 'lodash';
+    import marked from 'marked';
     import apis from '../apis';
     export default {
         name: "RegisterPostScreen",
         data() {
             return {
                 title: null,
-                content: null,
+                content: '# hello',
             };
+        },
+        computed: {
+            compiledMarkdown: function () {
+                return marked(this.content, { sanitize: true })
+            }
         },
         methods: {
             register() {
@@ -48,6 +65,9 @@
                     console.log(error);
                 });
             },
+            update: _.debounce(function (e) {
+                this.content = e.target.value
+            }, 300)
         },
     }
 </script>
@@ -64,8 +84,9 @@
     }
 
     .content {
+        padding: 20px;
         font-size: 25px;
-        height: 100%;
+        height: 10em;
     }
 
     textarea:hover,
@@ -84,5 +105,37 @@
         outline:0px !important;
         -webkit-appearance:none;
         box-shadow: none !important;
+    }
+
+    html, body, #editor {
+        margin: 0;
+        height: 100%;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        color: #333;
+    }
+
+    textarea, #editor div {
+        display: inline-block;
+        width: 49%;
+        height: 100%;
+        font-size: 25px;
+        vertical-align: top;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+
+    textarea {
+        border: none;
+        border-right: 1px solid #ccc;
+        resize: none;
+        outline: none;
+        background-color: #f6f6f6;
+        font-size: 25px;
+        font-family: 'Monaco', courier, monospace;
+        padding: 20px;
+    }
+
+    code {
+        color: #f66;
     }
 </style>
